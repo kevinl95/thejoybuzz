@@ -19,7 +19,14 @@
         <script type="text/javascript" src="web-notification.js"></script>
         <script src="https://joycon.js.org/Joycon.min.js"></script>
     <script>
-        
+        //manually ask for notification permissions (invoked automatically if needed and allowRequest=true)
+        webNotification.requestPermission(function onRequest(granted) {
+            if (granted) {
+                console.log('Permission Granted.');
+            } else {
+                console.log('Permission Not Granted.');
+            }
+        });
         const controllers = Joycon.controllers;
         
         const buttons = Object.values(Joycon.buttonMap);
@@ -68,6 +75,9 @@
                         }
                     });
                 }
+                controllers.vibrate({ preset: 'strong' }, 250);
+                // Wait so players can't spam the buttons
+                (async () => await new Promise(resolve => setTimeout(resolve, 500)))();
             });
         
         });
