@@ -15,7 +15,94 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script type="text/javascript" src="web-notification.js"></script>
         <script src="https://joycon.js.org/Joycon.min.js"></script>
+    <script>
+        
+        const controllers = Joycon.controllers;
+        
+        const buttons = Object.values(Joycon.buttonMap);
+        
+        buttons.forEach(button => {
+        
+            controllers.on.press(button, (value) => {
+                if (['a', 'b', 'x', 'y'].includes(button)) {
+                    webNotification.showNotification('Team B has buzzed!', {
+                        body: 'Team B has buzzed in!',
+                        icon: 'favicon.ico',
+                        onClick: function onNotificationClicked() {
+                            console.log('Notification clicked.');
+                        },
+                        autoClose: 4000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+                    }, function onShow(error, hide) {
+                        if (error) {
+                            window.alert('Unable to show notification: ' + error.message);
+                        } else {
+                            console.log('Notification Shown.');
+
+                            setTimeout(function hideNotification() {
+                                console.log('Hiding notification....');
+                                hide(); //manually close the notification (you can skip this if you use the autoClose option)
+                            }, 5000);
+                        }
+                    });
+                } else {
+                    webNotification.showNotification('Team A has buzzed!', {
+                        body: 'Team A has buzzed in!',
+                        icon: 'favicon.ico',
+                        onClick: function onNotificationClicked() {
+                            console.log('Notification clicked.');
+                        },
+                        autoClose: 4000 //auto close the notification after 4 seconds (you can manually close it via hide function)
+                    }, function onShow(error, hide) {
+                        if (error) {
+                            window.alert('Unable to show notification: ' + error.message);
+                        } else {
+                            console.log('Notification Shown.');
+
+                            setTimeout(function hideNotification() {
+                                console.log('Hiding notification....');
+                                hide(); //manually close the notification (you can skip this if you use the autoClose option)
+                            }, 5000);
+                        }
+                    });
+                }
+            });
+        
+        });
+        
+        controllers.on.connect((controller) => {
+        
+            console.log('Controller connected!', controller);
+            Notification.requestPermission().then(function(getperm) 
+            { 
+
+                console.log('Perm granted', getperm) 
+
+            });
+            var cID = controller.id;
+            if (cID.includes("Right")) {
+                $("#teambstatus").text("Team B (Right Controller) is connected!");
+            } else {
+                $("#teamastatus").text("Team A (Left Controller) is connected!");
+            }
+        });
+        
+        controllers.on.disconnect((controller) => {
+        
+            console.log('Controller disconnected!', controller);
+            
+            var cID = controller.id;
+            if (cID.includes("Right")) {
+                $("#teambstatus").text("Team B (Right Controller) is disconnected");
+            } else {
+                $("#teamastatus").text("Team A (Left Controller) is disconnected");
+            }
+        
+        });
+        
+    </script>
     </head>
     <body id="page-top">
         <!-- Header-->
@@ -24,8 +111,10 @@
                 <h1 class="mb-1">The Joy Buzz</h1>
                 <h3 class="mb-5"><em>Turn broken and unused Nintendo JoyCons into a fun quiz game!</em></h3>
                 <h3 class="mb-5"><em>Here's the guide on how:</em></h3>
-                <h3 class="mb-5"><em>Next, return here and allow notifications</em></h3>
-                <h3 class="mb-5"><em>Connect your JoyCons using Bluetooth! Once connected your two JoyCons will appear below</em></h3>
+                <h3 class="mb-5"><em>Connect your JoyCons using Bluetooth! Once connected press any button to connect them to this website. Their status is displayed below.</em></h3>
+                <h3 class="mb-5"><em>When prompted, allow notifications</em></h3>
+                <h4><span id="teamastatus" class="label label-info">Team A (Left Controller) is disconnected</span></h4>
+                <h4><span id="teambstatus" class="label label-info">Team B (Right Controller) is disconnected</span></h4>
             </div>
         </header>
         <!-- About-->
