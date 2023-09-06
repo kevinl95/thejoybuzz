@@ -18,6 +18,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script type="text/javascript" src="web-notification.js"></script>
         <script src="https://joycon.js.org/Joycon.min.js"></script>
+        <link rel="manifest" href="manifest.json">
     <script>
         //manually ask for notification permissions (invoked automatically if needed and allowRequest=true)
         webNotification.requestPermission(function onRequest(granted) {
@@ -113,6 +114,12 @@
         });
         
     </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+          // register service worker
+          navigator.serviceWorker.register("sw.js");
+        }
+      </script>
     </head>
     <body id="page-top">
         <!-- Header-->

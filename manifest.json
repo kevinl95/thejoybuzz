@@ -1,0 +1,25 @@
+{
+    "background_color": "#fffa00",
+    "description": "Turn Nintendo Switch Joy-Cons into game show buzzers!",
+    "dir": "ltr",
+    "display": "standalone",
+    "name": "The Joy Buzz",
+    "orientation": "any",
+    "scope": "/",
+    "short_name": "Joy Buzz",
+    "start_url": "/",
+    "theme_color": "#fffa00",
+    "categories": [],
+    "screenshots": [],
+    "icons": [
+      {
+        "src": "favicon.ico",
+        "type": "image/x-icon"
+      },
+      {
+        "src": "/favicon.ico",
+        "type": "image/x-icon"
+      }
+    ],
+    "shortcuts": []
+  }
