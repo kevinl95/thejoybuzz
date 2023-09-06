@@ -6,7 +6,7 @@ Try it [live!](https://thejoy.buzz/)
 
 The Joy Buzz is a simple web app that turns your Nintendo JoyCon controllers into quiz buzzers! Using Web BLE it looks for button presses on one of two connected JoyCons. The left controller becomes Team A, whereas the right controller becomes Team B. Web notifications let us tell the referee running the quiz which team buzzed in first. The controllers will also rumble when a buzz is received! By putting TheJoyBuzz up and then overlaying your slides, Google Docs, or other programs you can create a fun quiz game! You can also have TheJoyBuzz up on a seperate window, such as if you are using a laptop hooked up to a projector with the projector extending your display. Now you can have the questions in front of your contestants and the JoyBuzz notifications on your laptop.
 
-Background notifications to make displaying questions and the JoyBuzz concurrently easier are in progress!
+If your browser supports installing The Joy Buzz as an app, click the install button in the URL bar! Now The Joy Buzz can run minimized and in the background!
 
 # Why?
 
