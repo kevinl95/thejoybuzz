@@ -36,6 +36,7 @@
         
             controllers.on.press(button, (value) => {
                 if (['a', 'b', 'x', 'y'].includes(button)) {
+                    $("#teambstatus").text("Team B (Right Controller) is connected!");
                     webNotification.showNotification('Team B has buzzed!', {
                         body: 'Team B has buzzed in!',
                         icon: 'favicon.ico',
@@ -56,6 +57,7 @@
                         }
                     });
                 } else {
+                    $("#teamastatus").text("Team A (Left Controller) is connected!");
                     webNotification.showNotification('Team A has buzzed!', {
                         body: 'Team A has buzzed in!',
                         icon: 'favicon.ico',
@@ -92,12 +94,6 @@
                 console.log('Perm granted', getperm) 
 
             });
-            var cID = controller.id;
-            if (cID.includes("Right")) {
-                $("#teambstatus").text("Team B (Right Controller) is connected!");
-            } else {
-                $("#teamastatus").text("Team A (Left Controller) is connected!");
-            }
         });
         
         controllers.on.disconnect((controller) => {
