@@ -1,6 +1,6 @@
 # The Joy Buzz
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/c734e23b-3511-4854-8f9c-d0e6da87ac8a/deploy-status)](https://app.netlify.com/sites/dancing-semolina-8708d7/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c734e23b-3511-4854-8f9c-d0e6da87ac8a/deploy-status)](https://app.netlify.com/sites/dancing-semolina-8708d7/deploys) ![Bootstrap badge]({https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white})
 
 Try it [live!](https://thejoy.buzz/)
 
